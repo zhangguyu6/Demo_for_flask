@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block metas %}
+<meta http-equiv="refresh" content="4; url='/'">
+{% endblock %}
+
+{% block content %}
+<img src="{{ url_for('static', filename='404.gif') }}" title="404 Not Found" alt="404 Not Found">
+{% endblock %}

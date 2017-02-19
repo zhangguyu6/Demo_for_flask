@@ -1,0 +1,41 @@
+
+
+
+<ul class="posts">
+    {% for post in posts %}
+    <li class="posts">
+        <div class="post-content">
+            <div class="post-date">
+                {{ moment(post.timestamp).format('MMMM Do YY')}}
+                <hr  style="border:1px dashed black">
+                <h1 class="title"><b><a href="{{ url_for('.post', id=post.id) }}">{{ post.title }}</a></b></h1>
+                {% if post.body_html  %}
+                {{ post.body_html[:100] | safe }}
+                {% else %}
+                {{ post.body[:100] }}
+                {% endif %}
+            </div>
+        <div class="post-footer">
+            <a href="{{ url_for('.delete',id=post.id) }}">
+                <span class="label label-danger">删除文章</span>
+            </a>
+            <a href="{{ url_for('.edit' ,id=post.id)}}">
+                <span class="label label-danger">编辑</span>
+            </a>
+            {% if post.category_name %}
+                <span class="label label-warning">
+                    <span class="glyphicon glyphicon-tag"></span>
+                    {{ post.category_name }}
+                </span>
+            {% endif %}
+
+            <button class="btn btn-primary" type="button">
+            阅读次数 <span class="badge">{{ post.view_times }}</span>
+            </button>
+
+        </div>
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>

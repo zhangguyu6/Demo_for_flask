@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>CSS选择器.md</title></head>
+<body><h4>CSS选择器</h4>
+<h4>CSS规则:</h4>
+<pre lang='css'>
+strong{
+  color:red;
+}
+</pre>
+<p>strong为选择器，选择应用规则的DOM</p>
+<h4>标签选择器</h4>
+<p>以html标签确定</p>
+<h4>类选择器</h4>
+<p>通过设置对象的class属性，以.开头的选择器确定</p>
+<h4>ID选择器</h4>
+<p>通过设置对象的id属性，以#开头的选择器确定，id在文档中唯一</p>
+<h4>伪类选择器</h4>
+<p>CSS伪类（pseudo-class）是加在选择器后面的用来指定元素状态的关键字</p>
+<h4>关系选择器</h4>
+<ul><li>
+A E 元素A的任一后代E</li>
+<li>
+A &gt; E 元素A的子代E</li>
+<li>
+E:A（first-child） 元素E的父元素的第一个子元素</li>
+<li>
+B + E 元素B的所有兄弟元素E</li>
+<li>
+B ～ E 元素B拥有共同父元素的兄弟元素E</li>
+<li>
+* 任一元素</li>
+</ul>
+<h4>优先级</h4>
+<p>ID选择器比类选择器更具确定度, 而类选择器比标签选择器（tag selector）更具确定度。</p>
+</body>
+</html>

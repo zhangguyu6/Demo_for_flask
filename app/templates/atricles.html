@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block head %}
+{{ super() }}
+ <style type="text/css">
+ .posts {background-color: whitesmoke}
+ </style>
+{% endblock %}
+
+
+
+{% block page_content %}
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-12 col-md-10 posts">
+          <ul class="posts">
+    {% for post in posts %}
+    <li class="posts">
+        <div class="post-content">
+            <div class="post-date">
+                <hr  style="border:1px dashed black">
+                {{ moment(post.timestamp).format('LL')}}
+                <h1 class="title"><b><a href="{{ url_for('.post', id=post.id) }}">{{ post.title }}</a></b></h1>
+                <h3>bref:{{  post.into}}</h3>
+                {% if post.body_html  %}
+                {{ post.body_html[:100] | safe }}
+                {% else %}
+                {{ post.body[:100] }}
+                {% endif %}
+            </div>
+        <div class="post-footer">
+            <a href="{{ url_for('.delete',id=post.id) }}">
+                <span class="label label-danger"> 删除文章</span>
+            </a>
+            <a href="{{ url_for('.edit' ,id=post.id)}}">
+                <span class="label label-danger">编辑</span>
+            </a>
+            {% if post.category_name %}
+                <span class="label label-warning">
+                    <span class="glyphicon glyphicon-tag"></span>
+                    {{ post.category_name }}
+                </span>
+            {% endif %}
+
+            <button class="btn btn-primary" type="button">
+            阅读次数 <span class="badge">{{ post.view_times }}</span>
+            </button>
+
+        </div>
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+          {% if pagination  %}
+          <div class="pagination">{{ macros.pagination_widget(pagination,'.articles') }}</div>
+          {% endif %}
+      </div>
+  </div>
+</div>
+{% endblock %}

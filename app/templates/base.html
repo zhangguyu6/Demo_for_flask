@@ -1,0 +1,54 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}张谷羽的Blog {% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="icon" href="{{ url_for('static',filename='favicon.png') }}"
+      type="image/x-icon">
+    <link href="{{ url_for('static',filename='blog.css') }}" rel="stylesheet">
+    <style type="text/css">
+     a:active { text-decoration:none;}
+     a:hover { text-decoration:none;}
+    a {color:black; }
+    body{background-color:gainsboro;}
+
+
+    </style>
+{% endblock %}
+
+{% block navbar %}
+<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="{{ url_for('main.index') }}">Home</a>
+          <a class="blog-nav-item" href="{{ url_for('main.articles') }}">Archives</a>
+          <a class="blog-nav-item" href="{{ url_for('auth.login') }}">login</a>
+          <a class="blog-nav-item" href="{{ url_for('auth.logout') }}">logout</a>
+          <a class="blog-nav-item" href="#">About</a>
+        </nav>
+      </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% block page_content %}{% endblock %}
+</div>
+    
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+

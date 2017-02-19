@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block page_content %}
+<div class="container-fluid">
+<div class="form-write-article">
+    {{ wtf.quick_form(form)}}
+</div>
+</div>
+{% endblock %}
+
+{% block scripts  %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

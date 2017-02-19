@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros%}
+
+
+
+{% block page_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-9">
+            {% include '_posts.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
